@@ -1,0 +1,370 @@
+{
+	"info": {
+		"_postman_id": "1ba11d92-a8ef-42a5-90e2-ecb0285a4781",
+		"name": "QuoteGram",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22918507"
+	},
+	"item": [
+		{
+			"name": "Get quotes",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyIjp7Il9pZCI6IjY0ZDBmMzE5MzAxZGEyMGJkYTg2ZWJkZiIsImVtYWlsIjoiZmxhbmtlcjE5MTZAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkOExYaDFKelBnYkZHVjJxZlZDdkFkT0psVzJjaGRiNk5vaElnbDQ4TEt3cEZSSEE2TU4wdVciLCJfX3YiOjB9LCJpYXQiOjE2OTE0MTY1NTB9.KAEdtYhuMP5lftuRHYlEB6WwnNWxSSVgDRWYJJgKa-M",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/quotes",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"quotes"
+					]
+				},
+				"description": "Get all the quotations from the server"
+			},
+			"response": []
+		},
+		{
+			"name": "post quote",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyIjp7Il9pZCI6IjY0ZDBmMzE5MzAxZGEyMGJkYTg2ZWJkZiIsImVtYWlsIjoiZmxhbmtlcjE5MTZAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkOExYaDFKelBnYkZHVjJxZlZDdkFkT0psVzJjaGRiNk5vaElnbDQ4TEt3cEZSSEE2TU4wdVciLCJfX3YiOjB9LCJpYXQiOjE2OTE0MTY1NTB9.KAEdtYhuMP5lftuRHYlEB6WwnNWxSSVgDRWYJJgKa-M",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userID\":\"64f087c8e12a086a9d197f2f\",\n    \"content\":\"{{$randomLoremSentence}}\",\n    \"tags\":[\"{{$randomAdjective}}\",\"{{$randomAdjective}}\",\"{{$randomAdjective}}\"]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/quotes",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"quotes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post a like",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userID\":\"64f087c8e12a086a9d197f2f\",\n    \"quoteID\":\"64f0be1c83e291f9f7045786\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/quotes/64f0be1c83e291f9f7045786/like",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"quotes",
+						"64f0be1c83e291f9f7045786",
+						"like"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post a comment",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userID\":\"64f087c8e12a086a9d197f2f\",\n    \"quoteID\":\"64f0be1c83e291f9f7045786\",\n    \"content\":\"Hey, This one was interesting\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/quotes/64f0be1c83e291f9f7045786/comment",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"quotes",
+						"64f0be1c83e291f9f7045786",
+						"comment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\":\"{{$randomFullName}}\",\n    \"email\":\"{{$randomEmail}}\",\n    \"password\":\"welcome\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/register",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\":\"flanker1916@gmail.com\",\n    \"password\":\"welcome\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/login",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Users",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyIjp7Il9pZCI6IjY0ZDBmMzE5MzAxZGEyMGJkYTg2ZWJkZiIsImVtYWlsIjoiZmxhbmtlcjE5MTZAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkOExYaDFKelBnYkZHVjJxZlZDdkFkT0psVzJjaGRiNk5vaElnbDQ4TEt3cEZSSEE2TU4wdVciLCJfX3YiOjB9LCJpYXQiOjE2OTE0MTY1NTB9.KAEdtYhuMP5lftuRHYlEB6WwnNWxSSVgDRWYJJgKa-M",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/users",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Users by Id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyIjp7Il9pZCI6IjY0ZDBmMzE5MzAxZGEyMGJkYTg2ZWJkZiIsImVtYWlsIjoiZmxhbmtlcjE5MTZAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkOExYaDFKelBnYkZHVjJxZlZDdkFkT0psVzJjaGRiNk5vaElnbDQ4TEt3cEZSSEE2TU4wdVciLCJfX3YiOjB9LCJpYXQiOjE2OTE0MTY1NTB9.KAEdtYhuMP5lftuRHYlEB6WwnNWxSSVgDRWYJJgKa-M",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{baseUrl}}/users/64f0885ce12a086a9d197f32",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"users",
+						"64f0885ce12a086a9d197f32"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update user",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyIjp7Il9pZCI6IjY0ZDBmMzE5MzAxZGEyMGJkYTg2ZWJkZiIsImVtYWlsIjoiZmxhbmtlcjE5MTZAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkOExYaDFKelBnYkZHVjJxZlZDdkFkT0psVzJjaGRiNk5vaElnbDQ4TEt3cEZSSEE2TU4wdVciLCJfX3YiOjB9LCJpYXQiOjE2OTE0MTY1NTB9.KAEdtYhuMP5lftuRHYlEB6WwnNWxSSVgDRWYJJgKa-M",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\":\"{{$randomFullName}}\",\n    \"email\":\"{{$randomEmail}}\",\n    \"password\":\"{{$randomPassword}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/users/64f0885ce12a086a9d197f32",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"users",
+						"64f0885ce12a086a9d197f32"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete a user",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyIjp7Il9pZCI6IjY0ZDBmMzE5MzAxZGEyMGJkYTg2ZWJkZiIsImVtYWlsIjoiZmxhbmtlcjE5MTZAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkOExYaDFKelBnYkZHVjJxZlZDdkFkT0psVzJjaGRiNk5vaElnbDQ4TEt3cEZSSEE2TU4wdVciLCJfX3YiOjB9LCJpYXQiOjE2OTE0MTY1NTB9.KAEdtYhuMP5lftuRHYlEB6WwnNWxSSVgDRWYJJgKa-M",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/users/64f0885ce12a086a9d197f32",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"users",
+						"64f0885ce12a086a9d197f32"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3000"
+		},
+		{
+			"key": "accessToken",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyIjp7Il9pZCI6IjY0ZDBmMzE5MzAxZGEyMGJkYTg2ZWJkZiIsImVtYWlsIjoiZmxhbmtlcjE5MTZAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmIkMTAkOExYaDFKelBnYkZHVjJxZlZDdkFkT0psVzJjaGRiNk5vaElnbDQ4TEt3cEZSSEE2TU4wdVciLCJfX3YiOjB9LCJpYXQiOjE2OTE0MTY1NTB9.KAEdtYhuMP5lftuRHYlEB6WwnNWxSSVgDRWYJJgKa-M",
+			"type": "string",
+			"disabled": true
+		}
+	]
+}
